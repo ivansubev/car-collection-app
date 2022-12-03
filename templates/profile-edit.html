@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style/style.css' %}">
+    <title>CarCollection</title>
+</head>
+
+<body>
+<div id="box">
+    <header>
+        <!-- Navigation Bar -->
+        <h1><a class="index-navigation" href="{% url 'show index' %}"><span>C</span>ARS <span>C</span>OLLECTION</a></h1>
+        <nav>
+            <a href="{% url 'show catalogue' %}">Catalogue</a>
+            <a href="{% url 'create car' %}">Create Car</a>
+            <a href="{% url 'show profile' %}">Profile</a>
+        </nav>
+    </header>
+
+    <!-- edit profile form -->
+    <section id="register-page" class="content auth">
+        <form id="register" method="post" action="{% url 'edit profile' %}">
+            {% csrf_token %}
+            <div class="container">
+                <h1>Edit Profile</h1>
+
+                <label for="username">Username:</label>
+                {{ profile_form.username }}
+
+                <label for="email">Email:</label>
+                {{ profile_form.email }}
+
+                <label for="age">Age:</label>
+                {{ profile_form.age }}
+
+                <label for="password">Password:</label>
+                {{ profile_form.password }}
+
+                <label for="first_name">First Name:</label>
+                {{ profile_form.first_name }}
+
+                <label for="last_name">Last Name:</label>
+                {{profile_form.last_name}}
+
+                <label for="profile_picture">Profile Picture:</label>
+                {{ profile_form.profile_picture }}
+
+
+                <input class="btn" type="submit" value="Edit Profile">
+            </div>
+        </form>
+    </section>
+
+    <!-- footer -->
+    <footer>
+        &copy;SoftUni Team 2022. All rights reserved.
+    </footer>
+</div>
+</body>
+</html>

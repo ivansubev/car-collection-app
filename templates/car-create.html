@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'style/style.css' %}">
+    <title>CarCollection</title>
+</head>
+
+<body>
+<div id="box">
+
+    <header>
+        <!-- Navigation Bar -->
+        <h1><a class="index-navigation" href="{% url 'show index' %}"><span>C</span>ARS <span>C</span>OLLECTION</a></h1>
+        <nav>
+            <a href="{% url 'show catalogue' %}">Catalogue</a>
+            <a href="{% url 'create car' %}">Create Car</a>
+            <a href="{% url 'show profile' %}">Profile</a>
+        </nav>
+    </header>
+
+
+    <section id="create-page" class="auth">
+        <!-- create car form -->
+        <form id="create" method="post" action={% url 'create car' %}>
+            {% csrf_token %}
+            <div class="container">
+                <h1 class="form-create-headline">Create Car</h1>
+                <label for="type">Type:</label>
+                {{form.type }}
+                <label for="model">Model:</label>
+                {{form.model}}
+
+                <label for="year">Year:</label>
+                {{ form.year }}
+
+                <label for="image_url">Image URL:</label>
+                {{ form.image_url }}
+
+                <label for="price">Price:</label>
+                {{ form.price }}
+
+
+                <input class="btn" type="submit" value="Create Car">
+            </div>
+        </form>
+    </section>
+</div>
+<!-- Footer -->
+<footer>
+    &copy;SoftUni Team 2022. All rights reserved.
+</footer>
+<!-- End Footer -->
+
+</body>
+</html>
